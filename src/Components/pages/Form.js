@@ -1,34 +1,41 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
+import { useDispatch } from 'react-redux';
 import Button from './button';
-import { addBook } from '../../redux/books/books';
+import { addBooks } from '../../redux/books/booksSlice';
 
 const Form = () => {
   const dispatch = useDispatch();
-  const [book, setBook] = useState({});
-  const handleChange = (event) => {
-    setBook({
-      ...book,
-      id: nanoid(),
-      [event.target.name]: event.target.value,
-    });
-  };
-  const addNewBook = (e) => {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addBook(book));
-    setBook({
-      id: '',
-      title: '',
-      author: '',
-    });
+    if (!title || !author) {
+      return;
+    }
+    const formData = {
+      item_id: nanoid(),
+      title,
+      author,
+      category: 'fiction',
+    };
+    dispatch(addBooks(formData));
+    setTitle('');
+    setAuthor('');
   };
   return (
-    <form onSubmit={addNewBook} className="bookcontainer">
-      <input type="text" name="title" placeholder="Book Title" onChange={handleChange} />
-      <input type="text" name="author" placeholder="Author" onChange={handleChange} />
-      <Button onClick={addNewBook} color="#0290ff" text="Add" />
+    <form className="bookcontainer">
+      <input type="text" placeholder="Book Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input type="text" placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
+      <Button
+        color="#0290ff"
+        text="Add"
+        Click={
+            handleSubmit
+        }
+      />
     </form>
   );
 };
+
 export default Form;
