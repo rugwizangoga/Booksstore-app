@@ -1,20 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { bookStatus } from '../../redux/categories/categories';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from './button';
+import { checkStatus } from '../../redux/categories/categoriesSlice';
 
 const Categories = () => {
-  const status = useSelector((state) => state.categories || []);
+  const { status } = useSelector((store) => store.status);
   const dispatch = useDispatch();
-  const checkstatus = () => {
-    dispatch(bookStatus());
-  };
   return (
     <>
-      <Button color="#0290ff" text="Check status" onClick={checkstatus} />
+      <Button color="#0290ff" text="Check status" Click={() => { dispatch(checkStatus()); }} />
       <h5>{status}</h5>
     </>
   );
 };
-
 export default Categories;

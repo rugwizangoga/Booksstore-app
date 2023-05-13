@@ -1,10 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import Button from './button';
-import { removeBook } from '../../redux/books/books';
+import { deleteBook } from '../../redux/books/booksSlice';
 
-const Book = ({ title, author, id }) => {
+const Book = ({ id, title, author }) => {
   const dispatch = useDispatch();
   return (
     <li className="bookcontainer">
@@ -13,13 +13,7 @@ const Book = ({ title, author, id }) => {
           <h3>{title}</h3>
           <p className="author">{author}</p>
         </div>
-        <Button
-          onClick={() => {
-            dispatch(removeBook(id));
-          }}
-          color="red"
-          text="Remove"
-        />
+        <Button color="red" text="Remove" Click={() => { dispatch(deleteBook({ item_id: id })); }} />
       </div>
       <Button color="#0290ff" text="UPDATE PROGRESS" />
     </li>
