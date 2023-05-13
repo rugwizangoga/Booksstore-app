@@ -97,29 +97,22 @@ After you're finished please remove all the comments and instructions!
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-$ git clone https://github.com/rugwizangoga/Bookstore.git
+> Describe how a new developer could make use of your project.
 
-$ cd Bookstore
-
-$ npm install
-
-$ npm start
+To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
 In order to run this project you need:
+
 - Git
 - Shell
 - Browser
 - Code Editor
 
-<!--
-Example command:
+### Setup
 
-```sh
- gem install rails
-```
- -->
+Clone this repository to your desired folder:
 
 <!--
 Example commands:
@@ -130,19 +123,32 @@ Example commands:
 ```
 --->
 
+### Install
+
+Install this project with:
+
+- $ git clone https://github.com/rugwizangoga/Bookstore.git
+
+- $ cd Bookstore
+
+- $ npm install
+
+### Usage
+
+To run the project, execute the following command:
+
+- npm start
+
+### Run tests
+
+To run tests, run the following command:
+
+- npm test
 
 ### Deployment
 
 You can deploy this project using:
 - Github Pages
-
-<!--
-Example:
-
-```sh
-
-```
- -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
